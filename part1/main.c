@@ -55,8 +55,8 @@ int main(int argc, char *argv[]) {
             close(read_pipe[1]);
 
             literally_bool_buffer[0] = 1;
-            for (int i = 0; i < (strlen(text_buffer) - 1) / 2; ++i) {
-                if (text_buffer[i] != text_buffer[strlen(text_buffer) - i - 2]) {
+            for (int i = 0; i < strlen(text_buffer) / 2; ++i) {
+                if (text_buffer[i] != text_buffer[strlen(text_buffer) - i - 1]) {
                     literally_bool_buffer[0] = 0;
                     break;
                 }
