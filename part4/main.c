@@ -12,12 +12,14 @@ int main(int argc, char *argv[]) {
         printf("Invalid argument number. Required 2 - input and output files\n");
         return 1;
     }
+    char rp[] = "/tmp/read_pipe";
+    char wp[] = "/tmp/write_pipe";
 
     char text_buffer[5000] = {};
     int literally_bool_buffer[1250] = {};
 
-    mknod("/tmp/read_pipe", S_IFIFO | 0666, 0);
-    mknod("/tmp/write_pipe", S_IFIFO | 0666, 0);
+    mknod(rp, S_IFIFO | 0666, 0);
+    mknod(wp, S_IFIFO | 0666, 0);
 
     pid_t is_reader_writer = fork();
 
@@ -30,8 +32,8 @@ int main(int argc, char *argv[]) {
         close(file);
 
 
-        int read_pipe = open("/tmp/read_pipe", O_WRONLY);
-        int write_pipe = open("/tmp/write_pipe", O_RDONLY);
+        int read_pipe = open(rp, O_WRONLY);
+        int write_pipe = open(wp, O_RDONLY);
 
         write(read_pipe, text_buffer, sizeof(text_buffer));
         read(write_pipe, literally_bool_buffer, sizeof(literally_bool_buffer));
@@ -46,13 +48,13 @@ int main(int argc, char *argv[]) {
         close(read_pipe);
         close(write_pipe);
 
-        unlink("/tmp/read_pipe");
-        unlink("/tmp/write_pipe");
+        unlink(rp);
+        unlink(wp);
     } else {
         printf("Checker is online\n");
 
-        int read_pipe = open("/tmp/read_pipe", O_RDONLY);
-        int write_pipe = open("/tmp/write_pipe", O_WRONLY);
+        int read_pipe = open(rp, O_RDONLY);
+        int write_pipe = open(wp, O_WRONLY);
 
         read(read_pipe, text_buffer, sizeof(text_buffer));
 
