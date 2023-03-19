@@ -24,7 +24,7 @@ input_file --> reader --|read_pipe|--> checker --|write_pipe|--> writer --> outp
 Тесты */tests*
 В папке приведены тесты (файлы *.in и соответсвуюзие правильные ответы *.out)
 
-В папке tests/part1_tests_results приведены результаты работы программы из папки part1
+В папке part1/part1_tests_results приведены результаты работы программы из папки part1
 
 Тест 1:
 ```
@@ -80,7 +80,7 @@ input_file --> reader --|read_pipe|--> checker --|write_pipe|--> writer --> outp
 
 Тесты */tests*
 
-В папке tests/part2_tests_results приведены результаты работы программы из папки part2
+В папке part2/part2_tests_results приведены результаты работы программы из папки part2
 
 Тест 1:
 ```
@@ -140,7 +140,7 @@ output_file <--                 <--|write_pipe|--
 
 Тесты */tests*
 
-В папке tests/part3_tests_results приведены результаты работы программы из папки part3
+В папке part3/part3_tests_results приведены результаты работы программы из папки part3
 
 Тест 1:
 ```
@@ -200,7 +200,7 @@ output_file <--                 <--|write_pipe|--
 
 Тесты */tests*
 
-В папке tests/part4_tests_results приведены результаты работы программы из папки part4
+В папке part4/part4_tests_results приведены результаты работы программы из папки part4
 
 Тест 1:
 ```
